@@ -1,0 +1,4 @@
+.btnPrimary {
+	background-color: var(--qprimary);
+	color: var(--qdark);
+}
