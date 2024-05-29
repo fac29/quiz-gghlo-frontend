@@ -2,24 +2,25 @@ import React from 'react';
 import './CreateQuestionForm.css';
 import Button from '../Button/Button';
 
-type formProp = {
-	formData?: {
-		id: number;
-		category: string;
-		difficulty: 'easy' | 'medium' | 'hard';
-		question: string;
-		options: [string, string, string, string];
-		answer: string;
-		favourited: boolean;
-		completed: boolean;
-	};
-	formFunc: () => void;
-};
+// type formProp = {
+// 	formData?: {
+// 		id: number;
+// 		category: string;
+// 		difficulty: 'easy' | 'medium' | 'hard';
+// 		question: string;
+// 		options: [string, string, string, string];
+// 		answer: string;
+// 		favourited: boolean;
+// 		completed: boolean;
+// 	};
+// 	formFunc: () => void;
+// };
 
-export default function CreateQuestionForm({}: formProp) {
+export default function CreateQuestionForm() {
 	const [wordCount, SetWordCount] = React.useState('');
-	async function handleFormSubmission(event: Event) {
-		event.preventDefault();
+
+	function handleFormSubmission() {
+		//event.preventDefault();
 		console.log('CreateQuestion submitted');
 	}
 

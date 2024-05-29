@@ -2,6 +2,7 @@ import React from 'react';
 import '../src/index.css';
 import Button from './components/Button/Button';
 import CreateQuestionForm from './components/CreateQuestionForm/CreateQuestionsForm';
+import QuestionCard from './components/QuestionCard/QuestionCard';
 
 function App() {
 	return (
@@ -13,9 +14,17 @@ function App() {
 					btnText='yolo'
 					btnonClick={() => false}
 				/>
-			</div>
-			<div>
-				<CreateQuestionForm></CreateQuestionForm>
+				<Button
+					btnclassName='btnSecondary'
+					btnText='dolo'
+					btnonClick={() => false}
+				/>
+				<div>
+					<QuestionCard />
+				</div>
+				<div>
+					<CreateQuestionForm />
+				</div>
 			</div>
 		</React.Fragment>
 	);
