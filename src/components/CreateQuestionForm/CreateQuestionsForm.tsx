@@ -1,5 +1,6 @@
 import React from 'react';
 import './CreateQuestionForm.css';
+import Button from '../Button/Button';
 
 export default function CreateQuestionForm() {
 	const [wordCount, SetWordCount] = React.useState('');
@@ -80,9 +81,11 @@ export default function CreateQuestionForm() {
 					<option value='Medium'>Medium</option>
 					<option value='High'>High</option>
 				</select>
-				<button type='submit' onClick={handleFormSubmission}>
-					Create Question
-				</button>
+				<Button
+					btnclassName='btnPrimary'
+					btnText='Submit'
+					btnonClick={handleFormSubmission}
+				/>
 			</form>
 		</React.Fragment>
 	);
