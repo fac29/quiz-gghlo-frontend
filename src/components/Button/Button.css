@@ -6,7 +6,7 @@
 }
 
 .btnSecondary {
-	background-color: var(--dark);
+	background-color: var(--qdark);
 	color: var(--qlight);
 	border-radius: 8px;
 	padding: 16px 24px;
