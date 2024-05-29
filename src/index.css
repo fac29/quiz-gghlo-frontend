@@ -26,8 +26,12 @@ body {
 /* section for main style */
 
 .main {
-	background-color: var(--qdark);
-	color: var(--qlight);
+	background-color: var(--qlight);
+	color: var(--qdark);
 	height: 100vh;
 	width: 100vw;
+	padding: 32px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
