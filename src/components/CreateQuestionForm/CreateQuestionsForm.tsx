@@ -2,9 +2,23 @@ import React from 'react';
 import './CreateQuestionForm.css';
 import Button from '../Button/Button';
 
-export default function CreateQuestionForm() {
+type formProp = {
+	formData?: {
+		id: number;
+		category: string;
+		difficulty: 'easy' | 'medium' | 'hard';
+		question: string;
+		options: [string, string, string, string];
+		answer: string;
+		favourited: boolean;
+		completed: boolean;
+	};
+	formFunc: () => void;
+};
+
+export default function CreateQuestionForm({}: formProp) {
 	const [wordCount, SetWordCount] = React.useState('');
-	async function handleFormSubmission() {
+	async function handleFormSubmission(event: Event) {
 		event.preventDefault();
 		console.log('CreateQuestion submitted');
 	}
@@ -21,7 +35,7 @@ export default function CreateQuestionForm() {
 					maxLength={300}
 					onChange={(e) => SetWordCount(e.target.value)}
 				></textarea>
-				<p>{wordCount.length}/300</p>
+				<p>{wordCount.length}/300 CHARACTERS LEFT</p>
 				<label className='formLabel' htmlFor='questionOptionA'>
 					Option A
 				</label>
