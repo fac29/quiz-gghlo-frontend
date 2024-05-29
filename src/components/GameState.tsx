@@ -1,5 +1,4 @@
-// import React from 'react';
-import { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, ReactNode } from 'react';
 
 type UserScheme = {
 	questions?: Array<object> | null;
@@ -10,15 +9,27 @@ type UserScheme = {
 	currentQuestionsRequested?: number;
 };
 
-export const UserContext = createContext<UserScheme | null>(null);
+type UserContextType = {
+	user: UserScheme | null;
+	setUser: React.Dispatch<React.SetStateAction<UserScheme | null>>;
+};
+
+export const UserContext = createContext<UserContextType | undefined>(
+	undefined
+);
 
 export default function GameState({ children }: { children: ReactNode }) {
-	const currentUser = useContext(UserContext);
-
-	const [current, setCurrent] = useState<UserScheme | null>(currentUser);
+	const [user, setUser] = useState<UserScheme | null>({
+		questions: [],
+		totalQuestionsAnswered: 0,
+		totalCorrectAnswers: 0,
+		currentCorrectAnswers: 0,
+		currentQuestionsAnswered: 0,
+		currentQuestionsRequested: 0,
+	});
 
 	return (
-		<UserContext.Provider value={{ ...current, ...setCurrent }}>
+		<UserContext.Provider value={{ user, setUser }}>
 			{children}
 		</UserContext.Provider>
 	);
