@@ -1,12 +1,20 @@
 import React from 'react';
-import 'Button.css';
+import './Button.css';
 
-export default function Button() {
+type btnProps = {
+	btnText: string;
+	btnonClick: () => void;
+	btnclassName: string;
+};
+
+export default function Button({
+	btnText,
+	btnonClick,
+	btnclassName,
+}: btnProps) {
 	return (
-		<React.Fragment>
-			<div className='btnPrimary'>
-				<p>yolo</p>
-			</div>
-		</React.Fragment>
+		<button className={btnclassName} onClick={btnonClick}>
+			{btnText}
+		</button>
 	);
 }
