@@ -1,0 +1,17 @@
+.formCreatePrimary {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+    background-color: var(--qdark);
+    max-width: 600px;
+}
+
+.formGroupRow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.formLabel {
+    margin-top: 1em;
+}

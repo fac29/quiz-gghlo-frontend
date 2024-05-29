@@ -1,6 +1,7 @@
 import React from 'react';
 import '../src/index.css';
 import Button from './components/Button/Button';
+import CreateQuestionForm from './components/CreateQuestionForm/CreateQuestionsForm';
 
 function App() {
 	return (
@@ -12,6 +13,9 @@ function App() {
 					btnText='yolo'
 					btnonClick={() => false}
 				/>
+			</div>
+			<div>
+				<CreateQuestionForm></CreateQuestionForm>
 			</div>
 		</React.Fragment>
 	);
