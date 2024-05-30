@@ -15,3 +15,7 @@
 .formLabel {
     margin-top: 1em;
 }
+
+label, p {
+    color: var(--qlight);
+}
