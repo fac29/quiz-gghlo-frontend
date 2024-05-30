@@ -3,6 +3,7 @@ import '../src/index.css';
 import Button from './components/Button/Button';
 import CreateQuestionForm from './components/CreateQuestionForm/CreateQuestionsForm';
 import QuestionCard from './components/QuestionCard/QuestionCard';
+// import QuestionCardProps from './components/QuestionCard/QuestionCard';
 
 function App() {
 	return (
@@ -19,9 +20,7 @@ function App() {
 					btnText='dolo'
 					btnonClick={() => false}
 				/>
-				<div>
-					<QuestionCard />
-				</div>
+				<div>{<QuestionCard />}</div>
 				<div>
 					<CreateQuestionForm />
 				</div>

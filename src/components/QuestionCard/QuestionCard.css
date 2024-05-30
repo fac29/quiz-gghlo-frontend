@@ -1,0 +1,36 @@
+.questionCard {
+	background-color: var(--qdark);
+	border-radius: 8px;
+	padding: 16px;
+	color: var(--qlight);
+	max-width: 650px;
+	width: 40.625rem;
+}
+
+.questionCardHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.questionCardCategory {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.boxSecondary {
+	background-color: var(--qsecondary);
+	border-radius: 8px;
+	padding: 8px;
+}
+
+.btnTernary {
+	background-color: transparent;
+	border: none;
+	padding: 8px;
+}
+
+.icon {
+	aspect-ratio: 1;
+	max-height: 24px;
+}
