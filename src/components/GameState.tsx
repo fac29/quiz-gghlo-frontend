@@ -14,9 +14,7 @@ type UserContextType = {
 	setUser: React.Dispatch<React.SetStateAction<UserScheme | null>>;
 };
 
-export const UserContext = createContext<UserContextType | undefined>(
-	undefined
-);
+export const UserContext = createContext<UserContextType | null>(null);
 
 export default function GameState({ children }: { children: ReactNode }) {
 	const [user, setUser] = useState<UserScheme | null>({
