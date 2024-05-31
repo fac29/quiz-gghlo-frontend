@@ -33,10 +33,12 @@
 .btnTernary {
 	background-color: transparent;
 	border: none;
-	padding: 8px;
+	border-radius: 8px;
+	padding: 5px;
 }
 
 .btnTernary:hover {
+	background-color: var(--qsecondary);
 }
 
 .icon {
