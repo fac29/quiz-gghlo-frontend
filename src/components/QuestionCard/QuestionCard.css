@@ -3,6 +3,7 @@
 	border-radius: 8px;
 	padding: 16px;
 	color: var(--qlight);
+	text-transform: capitalize;
 	max-width: 650px;
 	width: 40.625rem;
 }
@@ -18,6 +19,11 @@
 	gap: 0.5rem;
 }
 
+.questionCardCustomBtns {
+	display: flex;
+	gap: 0.25rem;
+}
+
 .boxSecondary {
 	background-color: var(--qsecondary);
 	border-radius: 8px;
@@ -28,6 +34,9 @@
 	background-color: transparent;
 	border: none;
 	padding: 8px;
+}
+
+.btnTernary:hover {
 }
 
 .icon {

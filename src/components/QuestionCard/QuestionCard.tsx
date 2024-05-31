@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useContext } from 'react';
 import { UserContext } from '../GameState';
 import './QuestionCard.css';
 import Button from '../Button/Button';
@@ -16,7 +16,7 @@ export type QuestionCardProps = {
 };
 
 export default function QuestionCard(/*questionCard: QuestionCardProps*/) {
-	const context = React.useContext(UserContext);
+	const context = useContext(UserContext);
 
 	// const {
 	// 	id,
@@ -29,7 +29,7 @@ export default function QuestionCard(/*questionCard: QuestionCardProps*/) {
 	// 	completed,
 	// } = questionCard;
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (user) {
 			setUser({
 				...user,
