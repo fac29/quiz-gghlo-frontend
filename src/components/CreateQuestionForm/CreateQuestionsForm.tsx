@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FormEvent } from 'react';
 import './CreateQuestionForm.css';
 import Button from '../Button/Button';
 
@@ -27,7 +27,7 @@ export default function CreateQuestionForm({
 	const [difficulty, setDifficulty] = useState<'Easy' | 'Medium' | 'Hard'>(
 		'Easy'
 	);
-	const [wordCount, setWordCount] = React.useState('');
+	const [wordCount, setWordCount] = useState('');
 
 	useEffect(() => {
 		if (formData) {
@@ -39,7 +39,7 @@ export default function CreateQuestionForm({
 		}
 	}, [formData]);
 
-	function handleFormSubmission(event: React.FormEvent) {
+	function handleFormSubmission(event: FormEvent) {
 		event.preventDefault();
 		const data = {
 			id: formData?.id,
