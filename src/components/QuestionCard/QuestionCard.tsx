@@ -48,11 +48,9 @@ export default function QuestionCard(/*questionCard: QuestionCardProps*/) {
 		<div className='questionCard'>
 			<div className='questionCardHeader'>
 				<div className='questionCardCategory'>
+					<span className='boxSecondary'>{/*category || */ 'Category'}</span>
 					<span className='boxSecondary'>
-						{/*category || */ 'Category Here'}
-					</span>
-					<span className='boxSecondary'>
-						{/*difficulty || */ 'Difficulty Here'}
+						{/*difficulty || */ 'Difficulty'}
 					</span>
 				</div>
 				<div className='questionCardCustomBtns'>
@@ -73,37 +71,35 @@ export default function QuestionCard(/*questionCard: QuestionCardProps*/) {
 				</div>
 			</div>
 			<div className='questionCardGrid'>
-				<div className='questionCardGridRow'>
+				<div className='questionCardGridHeader'>
 					{/*question || */ 'Here is the question'}
 				</div>
-				<div className='questionCardGridRow'>
-					<div className='questionCardAnswer'>
-						{/*options[0] || */ 'Answer A'}
-					</div>
-					<div className='questionCardAnswer'>
-						{/*options[1] || */ 'Answer B'}
-					</div>
-				</div>
-				<div className='questionCardGridRow'>
-					<div className='questionCardAnswer'>
-						{/* options[2] ||  */ 'Answer C'}
-					</div>
-					<div className='questionCardAnswer'>
-						{/* options[3] ||  */ 'Answer D'}
-					</div>
-				</div>
-				<div className='questionCardBtnRow'>
-					{/* <Button
-						btnText='Delete'
-						btnonClick={() => void}
-						btnclassName='btnSecondary'
-					></Button>
-					<Button
-						btnText='Submit'
-						btnonClick={() => void}
-						btnclassName='btnPrimary'
-					></Button> */}
-				</div>
+				<button className='questionCardAnswer'>
+					{/*options[0] || */ 'Answer A'}
+				</button>
+				<button className='questionCardAnswer'>
+					{/*options[1] || */ 'Answer B'}
+				</button>
+				<button className='questionCardAnswer'>
+					{/* options[2] ||  */ 'Answer C'}
+				</button>
+				<button className='questionCardAnswer'>
+					{/* options[3] ||  */ 'Answer D'}
+				</button>
+			</div>
+			<div className='questionCardFooter'>
+				<button>Delete</button>
+				<button>Submit</button>
+				{/* <Button
+					btnText='Delete'
+					btnonClick={handleDeleteBtn}
+					btnclassName='btnSecondary'
+				></Button>
+				<Button
+					btnText='Submit'
+					btnonClick={handleSubmitBtn}
+					btnclassName='btnPrimary'
+				></Button> */}
 			</div>
 			{/* <h3>QuestionCard</h3>
 			<p>this is using the contextApi methods</p>

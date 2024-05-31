@@ -3,12 +3,13 @@
 	border-radius: 8px;
 	padding: 16px;
 	color: var(--qlight);
-	text-transform: capitalize;
+	text-transform: uppercase;
 	max-width: 650px;
-	width: 40.625rem;
+	width: 100vw;
 }
 
-.questionCardHeader {
+.questionCardHeader,
+.questionCardFooter {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -27,7 +28,8 @@
 .boxSecondary {
 	background-color: var(--qsecondary);
 	border-radius: 8px;
-	padding: 8px;
+	padding: 8px 24px;
+	font-size: 0.8rem;
 }
 
 .btnTernary {
@@ -44,4 +46,40 @@
 .icon {
 	aspect-ratio: 1;
 	max-height: 24px;
+}
+
+.questionCardGrid {
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	justify-items: center;
+	align-items: center;
+	max-width: 570px;
+	width: 100%;
+	margin: 1rem auto;
+	color: var(--qdark);
+}
+
+.questionCardGridHeader {
+	grid-column: 1 / 3;
+	font-weight: 700;
+}
+
+.questionCardGridHeader,
+.questionCardAnswer {
+	background-color: var(--qlight);
+	border-radius: 8px;
+	border-style: none;
+	padding: 24px 16px;
+	width: 100%;
+	text-align: center;
+}
+
+.questionCardAnswer {
+	text-transform: inherit;
+}
+
+.questionCardFooter {
+	margin: 0 1.5rem;
 }
