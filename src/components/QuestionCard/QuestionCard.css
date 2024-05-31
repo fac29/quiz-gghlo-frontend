@@ -80,6 +80,10 @@
 	text-transform: inherit;
 }
 
+.questionCardAnswer:hover {
+	opacity: 0.8;
+}
+
 .questionCardFooter {
 	margin: 0 1.5rem;
 }
