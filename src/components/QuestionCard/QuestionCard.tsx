@@ -45,23 +45,23 @@ export default function QuestionCard(/*questionCard: QuestionCardProps*/) {
 	const { user, setUser } = context;
 
 	return (
-		<div className='questionCard'>
-			<div className='questionCardHeader'>
-				<div className='questionCardCategory'>
-					<span className='boxSecondary'>{/*category || */ 'Category'}</span>
-					<span className='boxSecondary'>
+		<div className='question-card'>
+			<div className='question-card-header'>
+				<div className='question-card-category'>
+					<span className='box-secondary'>{/*category || */ 'Category'}</span>
+					<span className='box-secondary'>
 						{/*difficulty || */ 'Difficulty'}
 					</span>
 				</div>
-				<div className='questionCardCustomBtns'>
-					<button className='btnTernary'>
+				<div className='question-card-custom-btns'>
+					<button className='btn-ternary'>
 						<img
 							className='icon'
 							src='/pencil.svg'
 							aria-label='Edit question'
 						></img>
 					</button>
-					<button className='btnTernary'>
+					<button className='btn-ternary'>
 						<img
 							className='icon'
 							src='/star.svg'
@@ -70,24 +70,24 @@ export default function QuestionCard(/*questionCard: QuestionCardProps*/) {
 					</button>
 				</div>
 			</div>
-			<div className='questionCardGrid'>
-				<div className='questionCardGridHeader'>
+			<div className='question-card-grid'>
+				<div className='question-card-grid-header'>
 					{/*question || */ 'Here is the question'}
 				</div>
-				<button className='questionCardAnswer'>
+				<button className='question-card-answer'>
 					{/*options[0] || */ 'Answer A'}
 				</button>
-				<button className='questionCardAnswer'>
+				<button className='question-card-answer'>
 					{/*options[1] || */ 'Answer B'}
 				</button>
-				<button className='questionCardAnswer'>
+				<button className='question-card-answer'>
 					{/* options[2] ||  */ 'Answer C'}
 				</button>
-				<button className='questionCardAnswer'>
+				<button className='question-card-answer'>
 					{/* options[3] ||  */ 'Answer D'}
 				</button>
 			</div>
-			<div className='questionCardFooter'>
+			<div className='question-card-footer'>
 				<button>Delete</button>
 				<button>Submit</button>
 				{/* <Button
