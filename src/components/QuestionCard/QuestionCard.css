@@ -66,22 +66,13 @@
 	font-weight: 700;
 }
 
-.question-card-grid-header,
-.question-card-answer {
+.question-card-grid-header {
 	background-color: var(--qlight);
 	border-radius: 8px;
 	border-style: none;
 	padding: 24px 16px;
 	width: 100%;
 	text-align: center;
-}
-
-.question-card-answer {
-	text-transform: inherit;
-}
-
-.question-card-answer:hover {
-	opacity: 0.8;
 }
 
 .question-card-footer {

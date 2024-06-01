@@ -1,7 +1,14 @@
-import { useEffect, useContext } from 'react';
+import {
+	useEffect,
+	useContext,
+	useState,
+	ChangeEvent,
+	MouseEvent,
+} from 'react';
 import { UserContext } from '../GameState';
 import './QuestionCard.css';
 import Button from '../Button/Button';
+import QuestionCardAnswer from './QuestionCardAnswer';
 import '../Button/Button.css';
 
 export type QuestionCardProps = {
@@ -15,19 +22,21 @@ export type QuestionCardProps = {
 	completed: boolean;
 };
 
-export default function QuestionCard(/*questionCard: QuestionCardProps*/) {
+export default function QuestionCard(questionCard: QuestionCardProps) {
 	const context = useContext(UserContext);
 
-	// const {
-	// 	id,
-	// 	category,
-	// 	difficulty,
-	// 	question,
-	// 	options,
-	// 	answer,
-	// 	favourited,
-	// 	completed,
-	// } = questionCard;
+	const {
+		id,
+		category,
+		difficulty,
+		question,
+		options,
+		answer,
+		favourited,
+		completed,
+	} = questionCard;
+
+	const [selectAnswer, setSelectAnswer] = useState(false);
 
 	useEffect(() => {
 		if (user) {
@@ -44,14 +53,25 @@ export default function QuestionCard(/*questionCard: QuestionCardProps*/) {
 
 	const { user, setUser } = context;
 
+	// When an answer is selected, this should be recorded.
+	// function handleAnswerSelection(event: MouseEvent) {
+	// 	event.preventDefault();
+
+	// 	const target = event.target;
+	// 	target.classList.add('active');
+	// 	// remove 'selected' from previously selected answers
+	// }
+
+	function handleAnswerSubmission(event: ChangeEvent) {
+		event.preventDefault();
+	}
+
 	return (
 		<div className='question-card'>
 			<div className='question-card-header'>
 				<div className='question-card-category'>
-					<span className='box-secondary'>{/*category || */ 'Category'}</span>
-					<span className='box-secondary'>
-						{/*difficulty || */ 'Difficulty'}
-					</span>
+					<span className='box-secondary'>{category || 'Category'}</span>
+					<span className='box-secondary'>{difficulty || 'Difficulty'}</span>
 				</div>
 				<div className='question-card-custom-btns'>
 					<button className='btn-ternary'>
@@ -72,20 +92,11 @@ export default function QuestionCard(/*questionCard: QuestionCardProps*/) {
 			</div>
 			<div className='question-card-grid'>
 				<div className='question-card-grid-header'>
-					{/*question || */ 'Here is the question'}
+					{question || 'Here is the question'}
 				</div>
-				<button className='question-card-answer'>
-					{/*options[0] || */ 'Answer A'}
-				</button>
-				<button className='question-card-answer'>
-					{/*options[1] || */ 'Answer B'}
-				</button>
-				<button className='question-card-answer'>
-					{/* options[2] ||  */ 'Answer C'}
-				</button>
-				<button className='question-card-answer'>
-					{/* options[3] ||  */ 'Answer D'}
-				</button>
+				{options.map((option, i) => (
+					<QuestionCardAnswer key={option} answer={option} index={i} />
+				))}
 			</div>
 			<div className='question-card-footer'>
 				<button>Delete</button>
