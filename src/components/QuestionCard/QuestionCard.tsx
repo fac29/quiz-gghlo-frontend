@@ -16,27 +16,27 @@ export type QuestionCardProps = {
 	category: string;
 	difficulty: 'easy' | 'medium' | 'hard';
 	question: string;
-	options: [string, string, string, string];
-	answer: string;
+	options: string[];
+	correctAnswer: string;
 	favourited: boolean;
 	completed: boolean;
 };
 
-export default function QuestionCard(questionCard: QuestionCardProps) {
+export default function QuestionCard(props: {
+	questionCard: QuestionCardProps;
+}) {
 	const context = useContext(UserContext);
 
 	const {
-		id,
+		// id,
 		category,
 		difficulty,
 		question,
 		options,
-		answer,
-		favourited,
-		completed,
-	} = questionCard;
-
-	const [selectAnswer, setSelectAnswer] = useState(false);
+		correctAnswer,
+		// favourited,
+		// completed,
+	} = props.questionCard;
 
 	useEffect(() => {
 		if (user) {
@@ -52,19 +52,6 @@ export default function QuestionCard(questionCard: QuestionCardProps) {
 	}
 
 	const { user, setUser } = context;
-
-	// When an answer is selected, this should be recorded.
-	// function handleAnswerSelection(event: MouseEvent) {
-	// 	event.preventDefault();
-
-	// 	const target = event.target;
-	// 	target.classList.add('active');
-	// 	// remove 'selected' from previously selected answers
-	// }
-
-	function handleAnswerSubmission(event: ChangeEvent) {
-		event.preventDefault();
-	}
 
 	return (
 		<div className='question-card'>
@@ -95,7 +82,12 @@ export default function QuestionCard(questionCard: QuestionCardProps) {
 					{question || 'Here is the question'}
 				</div>
 				{options.map((option, i) => (
-					<QuestionCardAnswer key={option} answer={option} index={i} />
+					<QuestionCardAnswer
+						key={option}
+						answer={option}
+						index={i}
+						correct={option === correctAnswer ? true : false}
+					/>
 				))}
 			</div>
 			<div className='question-card-footer'>

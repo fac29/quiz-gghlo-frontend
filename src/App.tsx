@@ -3,7 +3,18 @@ import '../src/index.css';
 import Button from './components/Button/Button';
 import CreateQuestionForm from './components/CreateQuestionForm/CreateQuestionsForm';
 import QuestionCard from './components/QuestionCard/QuestionCard';
-// import QuestionCardProps from './components/QuestionCard/QuestionCard';
+import type { QuestionCardProps } from './components/QuestionCard/QuestionCard';
+
+const question: QuestionCardProps = {
+	id: 1,
+	category: 'History',
+	difficulty: 'easy',
+	question: 'When was the First World War?',
+	options: ['1914', '1915', '1916', '1917'],
+	correctAnswer: '1914',
+	favourited: false,
+	completed: false,
+};
 
 function App() {
 	return (
@@ -20,7 +31,9 @@ function App() {
 					btnText='dolo'
 					btnonClick={() => false}
 				/>
-				<div>{<QuestionCard />}</div>
+				<div>
+					<QuestionCard questionCard={question} />
+				</div>
 				<div>
 					<CreateQuestionForm />
 				</div>

@@ -1,25 +1,33 @@
-import { useEffect, useState, MouseEvent } from 'react';
+import { useState } from 'react';
 import './QuestionCardAnswer.css';
 
 type AnswerProps = {
 	answer: string;
 	index: number;
+	correct: boolean;
 };
 
 const placeholder: string[] = ['Answer A', 'Answer B', 'Answer C', 'Answer D'];
 
-function handleAnswerSelection(event: MouseEvent) {
-	event.preventDefault();
-	const target = event.target as HTMLElement;
-	target.classList.add('active');
-}
-
 export default function QuestionCardAnswer(props: AnswerProps) {
-	const [selectAnswer, setSelectAnswer] = useState(false);
+	const [selectAnswer, setSelectAnswer] = useState('');
+
+	function handleAnswerSelection(str: string) {
+		setSelectAnswer(str);
+	}
+
+	console.log(selectAnswer);
+	console.log(props);
 
 	return (
-		<button className='question-card-answer' onClick={handleAnswerSelection}>
-			{props.answer || placeholder[props.index]};
+		<button
+			onClick={() => handleAnswerSelection(props.answer)}
+			className={`question-card-answer ${
+				selectAnswer === props.answer ? 'active' : ''
+			}`}
+			value={props.answer}
+		>
+			{props.answer || placeholder[props.index]}
 		</button>
 	);
 }
