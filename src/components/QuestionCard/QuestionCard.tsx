@@ -8,7 +8,6 @@ import {
 import { UserContext } from '../GameState';
 import './QuestionCard.css';
 import Button from '../Button/Button';
-import QuestionCardAnswer from './QuestionCardAnswer';
 import '../Button/Button.css';
 
 export type QuestionCardProps = {
@@ -26,6 +25,7 @@ export default function QuestionCard(props: {
 	questionCard: QuestionCardProps;
 }) {
 	const context = useContext(UserContext);
+	const [selectAnswer, setSelectAnswer] = useState('');
 
 	const {
 		// id,
@@ -81,14 +81,21 @@ export default function QuestionCard(props: {
 				<div className='question-card-grid-header'>
 					{question || 'Here is the question'}
 				</div>
-				{options.map((option, i) => (
-					<QuestionCardAnswer
-						key={option}
-						answer={option}
-						index={i}
-						correct={option === correctAnswer ? true : false}
-					/>
-				))}
+				{options.map((option, i) => {
+					return (
+						<button
+							onClick={() => setSelectAnswer(option)}
+							className={`question-card-answer ${
+								selectAnswer === option ? 'active' : ''
+							}`}
+							value={option}
+							data-correct={option === correctAnswer ? true : false}
+							key={i}
+						>
+							{option}
+						</button>
+					);
+				})}
 			</div>
 			<div className='question-card-footer'>
 				{/* Placeholder buttons */}

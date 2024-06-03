@@ -5,6 +5,7 @@ type AnswerProps = {
 	answer: string;
 	index: number;
 	correct: boolean;
+	onClick: void;
 };
 
 const placeholder: string[] = ['Answer A', 'Answer B', 'Answer C', 'Answer D'];
@@ -15,9 +16,6 @@ export default function QuestionCardAnswer(props: AnswerProps) {
 	function handleAnswerSelection(str: string) {
 		setSelectAnswer(str);
 	}
-
-	console.log(selectAnswer);
-	console.log(props);
 
 	return (
 		<button
