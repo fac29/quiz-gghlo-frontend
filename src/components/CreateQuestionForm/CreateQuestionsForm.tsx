@@ -61,6 +61,10 @@ export default function CreateQuestionForm({
 		}
 	}
 
+	function handleButtonCancel() {
+		console.log('Cancelled');
+	}
+
 	function handleOptionChange(index: number, value: string) {
 		const newOptions = [...options];
 		newOptions[index] = value;
@@ -71,9 +75,10 @@ export default function CreateQuestionForm({
 		<React.Fragment>
 			<form onSubmit={handleFormSubmission} className='formCreatePrimary'>
 				<label className='formLabel' htmlFor='questionText'>
-					Input new question
+					Question:
 				</label>
 				<textarea
+					className='formInput'
 					name='questionText'
 					placeholder='Type in new question'
 					maxLength={300}
@@ -83,107 +88,142 @@ export default function CreateQuestionForm({
 						setQuestionText(e.target.value);
 					}}
 				></textarea>
-				<p>{300 - wordCount.length}/300 CHARACTERS LEFT</p>
-				<label className='formLabel' htmlFor='questionOptionA'>
-					Option A
-				</label>
-				<input
-					name='questionOptionA'
-					type='text'
-					placeholder='Type in option A'
-					value={options[0]}
-					onChange={(e) => handleOptionChange(0, e.target.value)}
-				/>
-				<label className='formLabel' htmlFor='questionOptionB'>
-					Option B
-				</label>
-				<input
-					name='questionOptionB'
-					type='text'
-					placeholder='Type in option B'
-					value={options[1]}
-					onChange={(e) => handleOptionChange(1, e.target.value)}
-				/>
-				<label className='formLabel' htmlFor='questionOptionC'>
-					Option C
-				</label>
-				<input
-					name='questionOptionC'
-					type='text'
-					placeholder='Type in option C'
-					value={options[2]}
-					onChange={(e) => handleOptionChange(2, e.target.value)}
-				/>
-				<label className='formLabel' htmlFor='questionOptionD'>
-					Option D
-				</label>
-				<input
-					name='questionOptionD'
-					type='text'
-					placeholder='Type in option D'
-					value={options[3]}
-					onChange={(e) => handleOptionChange(3, e.target.value)}
-				/>
-				<div className='formGroupRow'>
+				<p id='textareaCharactersText'>
+					{300 - wordCount.length}/300 CHARACTERS LEFT
+				</p>
+				<div className='formGroupRow-horizontal'>
+					<div className='formItem'>
+						<label className='formLabel' htmlFor='questionOptionA'>
+							Option A
+						</label>
+						<input
+							className='formInput'
+							name='questionOptionA'
+							type='text'
+							placeholder='Type in option A'
+							value={options[0]}
+							onChange={(e) => handleOptionChange(0, e.target.value)}
+						/>
+					</div>
+					<div className='formItem'>
+						<label className='formLabel' htmlFor='questionOptionB'>
+							Option B
+						</label>
+						<input
+							className='formInput'
+							name='questionOptionB'
+							type='text'
+							placeholder='Type in option B'
+							value={options[1]}
+							onChange={(e) => handleOptionChange(1, e.target.value)}
+						/>
+					</div>
+					<div className='formItem'>
+						<label className='formLabel' htmlFor='questionOptionC'>
+							Option C
+						</label>
+						<input
+							className='formInput'
+							name='questionOptionC'
+							type='text'
+							placeholder='Type in option C'
+							value={options[2]}
+							onChange={(e) => handleOptionChange(2, e.target.value)}
+						/>
+					</div>
+					<div className='formItem'>
+						<label className='formLabel' htmlFor='questionOptionD'>
+							Option D
+						</label>
+						<input
+							className='formInput'
+							name='questionOptionD'
+							type='text'
+							placeholder='Type in option D'
+							value={options[3]}
+							onChange={(e) => handleOptionChange(3, e.target.value)}
+						/>
+					</div>
+				</div>
+				<div className='formGroupRow-horizontal'>
 					<label htmlFor='correctAnswerOptions'>Correct Answer:</label>
-					<label htmlFor='radioAnswerOption'>Option A</label>
 					<input
+						className='formInput'
 						name='radioAnswerOption'
 						type='radio'
 						value={options[0]}
 						onChange={(e) => setCorrectAnswer(e.target.value)}
 					/>
-					<label htmlFor='radioQuestionOptionB'>Option B</label>
+					<label htmlFor='radioAnswerOption'>Option A</label>
 					<input
+						className='formInput'
 						name='radioAnswerOption'
 						type='radio'
 						value={options[1]}
 						onChange={(e) => setCorrectAnswer(e.target.value)}
 					/>
-					<label htmlFor='radioQuestionOptionC'>Option C</label>
+					<label htmlFor='radioQuestionOptionB'>Option B</label>
 					<input
+						className='formInput'
 						name='radioAnswerOption'
 						type='radio'
 						value={options[2]}
 						onChange={(e) => setCorrectAnswer(e.target.value)}
 					/>
-					<label htmlFor='radioQuestionOptionD'>Option D</label>
+					<label htmlFor='radioQuestionOptionC'>Option C</label>
 					<input
+						className='formInput'
 						name='radioAnswerOption'
 						type='radio'
 						value={options[3]}
 						onChange={(e) => setCorrectAnswer(e.target.value)}
 					/>
+					<label htmlFor='radioQuestionOptionD'>Option D</label>
 				</div>
-				<label className='formLabel' htmlFor='categories'>
-					Select category
-				</label>
-				<input
-					name='categories'
-					type='text'
-					placeholder='enter category eg. Music'
-					value={category}
-					onChange={(e) => setCategory(e.target.value)}
-				/>
-				<label className='formLabel' htmlFor='difficulty'>
-					Select difficulty
-				</label>
-				<select
-					name='difficulty'
-					value={difficulty}
-					onChange={(e) =>
-						setDifficulty(e.target.value as 'Easy' | 'Medium' | 'Hard')
-					}
-				>
-					<option value='Easy'>Easy</option>
-					<option value='Medium'>Medium</option>
-					<option value='High'>High</option>
-				</select>
-				<Button
-					btnclassName='btnPrimary'
-					btnText='Submit'
-					btnonClick={handleFormSubmission}
-				/>
+				<div className='formGroupRow-horizontal'>
+					<div className='formItem'>
+						<label className='formLabel' htmlFor='categories'>
+							Select category:
+						</label>
+						<input
+							className='formInput'
+							name='categories'
+							type='text'
+							placeholder='enter category eg. Music'
+							value={category}
+							onChange={(e) => setCategory(e.target.value)}
+						/>
+					</div>
+					<div className='formItem'>
+						<label className='formLabel' htmlFor='difficulty'>
+							Select difficulty:
+						</label>
+						<select
+							className='formInput'
+							name='difficulty'
+							value={difficulty}
+							onChange={(e) =>
+								setDifficulty(e.target.value as 'Easy' | 'Medium' | 'Hard')
+							}
+						>
+							<option value='Easy'>Easy</option>
+							<option value='Medium'>Medium</option>
+							<option value='High'>High</option>
+						</select>
+					</div>
+				</div>
+				<div className='formGroupRow-horizontal'>
+					<Button
+						btnclassName='btnPrimary'
+						btnText='Cancel'
+						btnonClick={handleButtonCancel}
+					/>
+					<Button
+						btnclassName='btnPrimary'
+						btnText='Submit'
+						btnonClick={handleFormSubmission}
+					/>
+				</div>
 			</form>
 		</React.Fragment>
 	);
