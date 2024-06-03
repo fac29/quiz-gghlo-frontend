@@ -99,6 +99,7 @@ export default function QuestionCard(questionCard: QuestionCardProps) {
 				))}
 			</div>
 			<div className='question-card-footer'>
+				{/* Placeholder buttons */}
 				<button>Delete</button>
 				<button>Submit</button>
 				{/* <Button
