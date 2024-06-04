@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode } from 'react';
+/* import React, { createContext, useState, ReactNode } from 'react';
 
 type UserScheme = {
 	questions?: Array<object> | null;
@@ -25,6 +25,20 @@ export default function GameState({ children }: { children: ReactNode }) {
 		currentQuestionsAnswered: 0,
 		currentQuestionsRequested: 0,
 	});
+
+	return (
+		<UserContext.Provider value={{ user, setUser }}>
+			{children}
+		</UserContext.Provider>
+	);
+}
+ */
+
+import React from 'react';
+import { UserScheme, UserContext } from './UserContext';
+
+export default function GameState({ children }: { children: React.ReactNode }) {
+	const [user, setUser] = React.useState<UserScheme | null>(null);
 
 	return (
 		<UserContext.Provider value={{ user, setUser }}>

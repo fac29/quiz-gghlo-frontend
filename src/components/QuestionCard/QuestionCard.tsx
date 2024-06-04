@@ -1,5 +1,5 @@
-import { useEffect, useContext, useState, MouseEvent } from 'react';
-import { UserContext } from '../GameState';
+/* import { useEffect, useContext, useState, MouseEvent } from 'react';
+
 import './QuestionCard.css';
 import Button from '../Button/Button';
 import '../Button/Button.css';
@@ -19,12 +19,12 @@ export type QuestionCardProps = {
 
 export default function QuestionCard(props: {
 	questionCard: QuestionCardProps;
-	toggleDisplay: () => {};
+	//toggleDisplay: () => {};
 }) {
-	const context = useContext(UserContext);
+	//const context = useContext(UserContext);
+	const { user, setUser } = useContext(UserContext);
 	const [selectAnswer, setSelectAnswer] = useState('');
 	const [showSubmitButton, setShowSubmitButton] = useState(true);
-	const [user, setUser] = useState(context);
 
 	const {
 		id,
@@ -47,9 +47,9 @@ export default function QuestionCard(props: {
 	// 	}
 	// }, []);
 
-	if (!context) {
-		return <div>Loading...</div>;
-	}
+	// if (!context) {
+	// 	return <div>Loading...</div>;
+	// }
 
 	function handleAnswerSubmission(event: MouseEvent) {
 		event.preventDefault();
@@ -100,8 +100,12 @@ export default function QuestionCard(props: {
 	function handleFavouriteQuestion(event: MouseEvent) {
 		event.preventDefault();
 
-		// bring up form and toggle favourite boolean
-		props.toggleDisplay.setShowUI({ QuestionForm: true });
+		// use gamestate to update User.oneQuestion
+setUser(user: UserScheme => ({
+			...user,
+			totalQuestionsAnswered: user.totalQuestionsAnswered + 1,
+			// Add other updates as needed
+		})
 	}
 
 	return (
@@ -154,7 +158,7 @@ export default function QuestionCard(props: {
 					btnonClick={() => deleteQuestion(1)}
 					btnclassName='btnSecondary'
 				/>
-				{/* Pass in selectAnswer to the submit function */}
+				
 				{showSubmitButton && (
 					<Button
 						btnText='Submit'
@@ -163,9 +167,8 @@ export default function QuestionCard(props: {
 					/>
 				)}
 			</div>
-			{/* <h3>QuestionCard</h3>
-			<p>this is using the contextApi methods</p>
-			{user && <p>{user.totalQuestionsAnswered}</p>} */}
+			
 		</div>
 	);
 }
+ */
