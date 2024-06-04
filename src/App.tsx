@@ -2,11 +2,11 @@ import React from 'react';
 import '../src/index.css';
 import Button from './components/Button/Button';
 import CreateQuestionForm from './components/CreateQuestionForm/CreateQuestionsForm';
-import QuestionCard from './components/QuestionCard/QuestionCard';
-import type { QuestionCardProps } from './components/QuestionCard/QuestionCard';
+//import QuestionCard from './components/QuestionCard/QuestionCard';
+//import type { QuestionCardProps } from './components/QuestionCard/QuestionCard';
 
 // mock question to test functionality of QuestionCard component
-const question: QuestionCardProps = {
+/* const question: QuestionCardProps = {
 	id: 1,
 	category: 'History',
 	difficulty: 'easy',
@@ -16,16 +16,16 @@ const question: QuestionCardProps = {
 	favourited: false,
 	completed: false,
 	timestamp: '2023-04-01T10:00:00Z',
-};
+}; */
 
 function App() {
-	const [showUI, setShowUI] = React.useState({
+	/* const [showUI, setShowUI] = React.useState({
 		Navbar: true,
 		UserAvatar: true,
 		FilterQuestions: false,
 		QuestionStream: false,
 		QuestionForm: false,
-	});
+	}); */
 
 	// const handleUIChange = () => {
 	// 	setShowUI(showUI);
@@ -34,32 +34,28 @@ function App() {
 	return (
 		<React.Fragment>
 			<div className='main'>
-				{showUI.Navbar && (
-					<>
-						<h1>best team in the history of FAC</h1>
-						<Button
-							btnclassName='btnPrimary'
-							btnText='yolo'
-							btnonClick={() => false}
-						/>
-						<Button
-							btnclassName='btnSecondary'
-							btnText='dolo'
-							btnonClick={() => false}
-						/>
-					</>
-				)}
+				<h1>best team in the history of FAC</h1>
+				<Button
+					btnclassName='btnPrimary'
+					btnText='yolo'
+					btnonClick={() => false}
+				/>
+				<Button
+					btnclassName='btnSecondary'
+					btnText='dolo'
+					btnonClick={() => false}
+				/>
+
 				<div>
-					<QuestionCard
+					{/* <QuestionCard
 						questionCard={question}
 						toggleDisplay={() => setShowUI}
-					/>
+					/> */}
 				</div>
-				{showUI.QuestionForm && (
-					<div>
-						<CreateQuestionForm />
-					</div>
-				)}
+
+				<div>
+					<CreateQuestionForm />
+				</div>
 			</div>
 		</React.Fragment>
 	);
