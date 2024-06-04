@@ -11,13 +11,15 @@ export type QuestionCardProps = {
 	difficulty: 'easy' | 'medium' | 'hard';
 	question: string;
 	options: string[];
-	correctAnswer: string;
+	answer: string;
 	favourited: boolean;
 	completed: boolean;
+	timestamp: string;
 };
 
 export default function QuestionCard(props: {
 	questionCard: QuestionCardProps;
+	toggleDisplay: () => {};
 }) {
 	const context = useContext(UserContext);
 	const [selectAnswer, setSelectAnswer] = useState('');
@@ -30,9 +32,10 @@ export default function QuestionCard(props: {
 		difficulty,
 		question,
 		options,
-		correctAnswer,
-		// favourited,
-		// completed,
+		answer,
+		favourited,
+		completed,
+		timestamp,
 	} = props.questionCard;
 
 	// useEffect(() => {
@@ -54,7 +57,7 @@ export default function QuestionCard(props: {
 		const answerOptions = Array.from(
 			document.querySelectorAll('.question-card-answer')
 		);
-		const correctAnswer = answerOptions.find((option) => {
+		const inputAnswer = answerOptions.find((option) => {
 			if (option instanceof HTMLElement) {
 				return option.dataset.correct === 'true';
 			}
@@ -66,12 +69,23 @@ export default function QuestionCard(props: {
 			}
 		}) as HTMLInputElement;
 
-		if (selectAnswer === correctAnswer.value) {
+		if (selectAnswer === inputAnswer.value) {
 			selectedAnswer.classList.add('correct');
-			updateQuestion(id);
+			updateQuestion({
+				id,
+				category,
+				difficulty,
+				question,
+				options,
+				answer,
+				favourited,
+				completed: true,
+				timestamp,
+			});
+			// need to pass in that the question is completed
 			setShowSubmitButton(!showSubmitButton);
 		} else {
-			correctAnswer.classList.add('correct');
+			inputAnswer.classList.add('correct');
 			selectedAnswer.classList.add('incorrect');
 			setShowSubmitButton(!showSubmitButton);
 		}
@@ -79,10 +93,15 @@ export default function QuestionCard(props: {
 
 	function handleEditQuestion(event: MouseEvent) {
 		event.preventDefault();
+
+		// bring up edit question form pre-populated with existing question
 	}
 
 	function handleFavouriteQuestion(event: MouseEvent) {
 		event.preventDefault();
+
+		// bring up form and toggle favourite boolean
+		props.toggleDisplay.setShowUI({ QuestionForm: true });
 	}
 
 	return (
@@ -121,7 +140,7 @@ export default function QuestionCard(props: {
 								selectAnswer === option ? 'active' : ''
 							}`}
 							value={option}
-							data-correct={option === correctAnswer ? true : false}
+							data-correct={option === answer ? true : false}
 							key={i}
 						>
 							{option}
@@ -132,7 +151,7 @@ export default function QuestionCard(props: {
 			<div className='question-card-footer'>
 				<Button
 					btnText='Delete'
-					btnonClick={() => deleteQuestion(id)}
+					btnonClick={() => deleteQuestion(1)}
 					btnclassName='btnSecondary'
 				/>
 				{/* Pass in selectAnswer to the submit function */}
