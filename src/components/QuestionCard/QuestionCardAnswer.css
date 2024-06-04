@@ -1,0 +1,24 @@
+.question-card-answer {
+	background-color: var(--qlight);
+	border-radius: 8px;
+	border-style: none;
+	padding: 24px 16px;
+	width: 100%;
+	text-align: center;
+}
+
+.question-card-answer {
+	text-transform: inherit;
+}
+
+.question-card-answer.active {
+	border: 3px solid var(--qprimary);
+}
+
+.question-card-answer.inactive {
+	border: none;
+}
+
+.question-card-answer:hover {
+	opacity: 0.8;
+}
