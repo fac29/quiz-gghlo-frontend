@@ -73,6 +73,7 @@ export default function QuestionCard(props: {
 		} else {
 			correctAnswer.classList.add('correct');
 			selectedAnswer.classList.add('incorrect');
+			setShowSubmitButton(!showSubmitButton);
 		}
 	}
 
