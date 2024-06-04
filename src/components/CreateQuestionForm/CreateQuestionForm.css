@@ -6,11 +6,21 @@
     max-width: 600px;
 }
 
-.formGroupRow {
+
+.formGroupRow-horizontal {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 1em;
+    gap: 1em;
 }
+
+.formGroupRow-horizontal .formItem {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin-bottom: 20px; /* Adjust this value for spacing between rows */
+  }
 
 .formLabel {
     margin-top: 1em;
@@ -18,4 +28,23 @@
 
 label, p {
     color: var(--qlight);
+}
+
+.formInput {
+    border-radius: 8px;
+    height: 2.5em;
+    padding: 0.5em;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 8em;
+}
+
+form {
+    padding: 1em;
+}
+
+#textareaCharactersText {
+    text-align: right;
 }
