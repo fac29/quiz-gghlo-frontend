@@ -1,6 +1,11 @@
 export const deleteQuestion = async (id: number) => {
 	try {
-		const response = await fetch(`http:://localhost:3210/questions/${id}`);
+		const response = await fetch(`http://localhost:3210/questions/${id}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
 
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
@@ -19,7 +24,7 @@ export const deleteQuestion = async (id: number) => {
 
 export const resetGame = async () => {
 	try {
-		const response = await fetch(`http:://localhost:3210/reset`);
+		const response = await fetch(`http://localhost:3210/reset`);
 
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
@@ -36,9 +41,47 @@ export const resetGame = async () => {
 	}
 };
 
-export const updateQuestion = async (id: number) => {
+type uQuestion = {
+	id: number;
+	category: string;
+	difficulty: 'easy' | 'medium' | 'hard';
+	question: string;
+	options: string[];
+	answer: string;
+	favourited?: boolean;
+	completed?: boolean;
+	timestamp: string;
+};
+
+export const updateQuestion = async ({
+	id,
+	category,
+	difficulty,
+	question,
+	options,
+	answer,
+	favourited,
+	completed,
+	timestamp,
+}: uQuestion) => {
 	try {
-		const response = await fetch(`http:://localhost:3210/questions/${id}`);
+		const response = await fetch(`http://localhost:3210/questions/${id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				id,
+				category,
+				difficulty,
+				question,
+				options,
+				answer,
+				favourited,
+				completed,
+				timestamp,
+			}),
+		});
 
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
@@ -57,7 +100,7 @@ export const updateQuestion = async (id: number) => {
 
 export const getAllQuestions = async () => {
 	try {
-		const response = await fetch(`http:://localhost:3210/`);
+		const response = await fetch(`http://localhost:3210/`);
 
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
@@ -88,7 +131,7 @@ export const getFilterQuestions = async ({
 	numberOfQuestions,
 }: qQueryFilter) => {
 	try {
-		const response = await fetch(`http:://localhost:3210/`, {
+		const response = await fetch(`http://localhost:3210/`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -136,7 +179,7 @@ export const createQuestion = async ({
 	completed,
 }: cQuestion) => {
 	try {
-		const response = await fetch(`http:://localhost:3210/`, {
+		const response = await fetch(`http://localhost:3210/`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',

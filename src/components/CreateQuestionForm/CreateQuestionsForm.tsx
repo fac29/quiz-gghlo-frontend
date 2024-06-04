@@ -221,7 +221,7 @@ export default function CreateQuestionForm({
 					<Button
 						btnclassName='btnPrimary'
 						btnText='Submit'
-						btnonClick={handleFormSubmission}
+						btnonClick={() => handleFormSubmission}
 					/>
 				</div>
 			</form>
