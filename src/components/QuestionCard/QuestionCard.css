@@ -105,3 +105,11 @@
 .question-card-answer:hover {
 	opacity: 0.8;
 }
+
+.correct {
+	background-color: var(--qprimary);
+}
+
+.incorrect {
+	background-color: #f7a1a1;
+}

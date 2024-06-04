@@ -1,14 +1,9 @@
-import {
-	useEffect,
-	useContext,
-	useState,
-	ChangeEvent,
-	MouseEvent,
-} from 'react';
+import { useEffect, useContext, useState, MouseEvent } from 'react';
 import { UserContext } from '../GameState';
 import './QuestionCard.css';
 import Button from '../Button/Button';
 import '../Button/Button.css';
+import { deleteQuestion, updateQuestion } from '../../utils/utils.ts';
 
 export type QuestionCardProps = {
 	id: number;
@@ -26,9 +21,11 @@ export default function QuestionCard(props: {
 }) {
 	const context = useContext(UserContext);
 	const [selectAnswer, setSelectAnswer] = useState('');
+	const [showSubmitButton, setShowSubmitButton] = useState(true);
+	const [user, setUser] = useState(context);
 
 	const {
-		// id,
+		id,
 		category,
 		difficulty,
 		question,
@@ -38,20 +35,54 @@ export default function QuestionCard(props: {
 		// completed,
 	} = props.questionCard;
 
-	useEffect(() => {
-		if (user) {
-			setUser({
-				...user,
-				totalQuestionsAnswered: (user.totalQuestionsAnswered || 0) + 3,
-			});
-		}
-	}, []);
+	// useEffect(() => {
+	// 	if (user) {
+	// 		setUser({
+	// 			...user,
+	// 			totalQuestionsAnswered: (user.totalQuestionsAnswered || 0) + 3,
+	// 		});
+	// 	}
+	// }, []);
 
 	if (!context) {
 		return <div>Loading...</div>;
 	}
 
-	const { user, setUser } = context;
+	function handleAnswerSubmission(event: MouseEvent) {
+		event.preventDefault();
+
+		const answerOptions = Array.from(
+			document.querySelectorAll('.question-card-answer')
+		);
+		const correctAnswer = answerOptions.find((option) => {
+			if (option instanceof HTMLElement) {
+				return option.dataset.correct === 'true';
+			}
+		}) as HTMLInputElement;
+
+		const selectedAnswer = answerOptions.find((option) => {
+			if (option.value === selectAnswer) {
+				return option;
+			}
+		}) as HTMLInputElement;
+
+		if (selectAnswer === correctAnswer.value) {
+			selectedAnswer.classList.add('correct');
+			updateQuestion(id);
+			setShowSubmitButton(!showSubmitButton);
+		} else {
+			correctAnswer.classList.add('correct');
+			selectedAnswer.classList.add('incorrect');
+		}
+	}
+
+	function handleEditQuestion(event: MouseEvent) {
+		event.preventDefault();
+	}
+
+	function handleFavouriteQuestion(event: MouseEvent) {
+		event.preventDefault();
+	}
 
 	return (
 		<div className='question-card'>
@@ -61,14 +92,14 @@ export default function QuestionCard(props: {
 					<span className='box-secondary'>{difficulty || 'Difficulty'}</span>
 				</div>
 				<div className='question-card-custom-btns'>
-					<button className='btn-ternary'>
+					<button className='btn-ternary' onClick={handleEditQuestion}>
 						<img
 							className='icon'
 							src='/pencil.svg'
 							aria-label='Edit question'
 						></img>
 					</button>
-					<button className='btn-ternary'>
+					<button className='btn-ternary' onClick={handleFavouriteQuestion}>
 						<img
 							className='icon'
 							src='/star.svg'
@@ -98,19 +129,19 @@ export default function QuestionCard(props: {
 				})}
 			</div>
 			<div className='question-card-footer'>
-				{/* Placeholder buttons */}
-				<button>Delete</button>
-				<button>Submit</button>
-				{/* <Button
-					btnText='Delete'
-					btnonClick={handleDeleteBtn}
-					btnclassName='btnSecondary'
-				></Button>
 				<Button
-					btnText='Submit'
-					btnonClick={handleSubmitBtn}
-					btnclassName='btnPrimary'
-				></Button> */}
+					btnText='Delete'
+					btnonClick={() => deleteQuestion(id)}
+					btnclassName='btnSecondary'
+				/>
+				{/* Pass in selectAnswer to the submit function */}
+				{showSubmitButton && (
+					<Button
+						btnText='Submit'
+						btnonClick={handleAnswerSubmission}
+						btnclassName='btnPrimary'
+					/>
+				)}
 			</div>
 			{/* <h3>QuestionCard</h3>
 			<p>this is using the contextApi methods</p>
