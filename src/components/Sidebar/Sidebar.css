@@ -17,15 +17,15 @@
 .round{
 
     background-color:  white;
-    height: 60px;
-    width: 60px;
+    height: 70px;
+    width: 70px;
     border-radius:  50%;
 
 }
 
 .purple{
     background-color: var(--qsecondary);
-    width:  104px;
+    min-width: 104px;
     padding: 16px 24px;
     display:flex;
     justify-content: center;

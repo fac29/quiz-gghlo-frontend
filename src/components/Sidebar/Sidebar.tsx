@@ -1,6 +1,7 @@
-import React from 'react'
+// import React from 'react'
 import Button from '../Button/Button' 
 import   './Sidebar.css'
+import { resetGame } from '../../utils/utils'
 
 export default function Sidebar() {
   return (
@@ -13,8 +14,8 @@ export default function Sidebar() {
         <div className="rightgroup">
         <Button
 					btnclassName='btnPrimary'
-					btnText='yolo'
-					btnonClick={() => false}
+					btnText='Reset Game'
+					btnonClick={() => resetGame}
 				/>
         </div>
         </div>
