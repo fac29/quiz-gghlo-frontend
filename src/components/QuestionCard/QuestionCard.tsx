@@ -1,4 +1,4 @@
-/* import { useEffect, useContext, useState, MouseEvent } from 'react';
+import { useState, MouseEvent } from 'react';
 
 import './QuestionCard.css';
 import Button from '../Button/Button';
@@ -22,7 +22,7 @@ export default function QuestionCard(props: {
 	//toggleDisplay: () => {};
 }) {
 	//const context = useContext(UserContext);
-	const { user, setUser } = useContext(UserContext);
+	// const { user, setUser } = useContext(UserContext);
 	const [selectAnswer, setSelectAnswer] = useState('');
 	const [showSubmitButton, setShowSubmitButton] = useState(true);
 
@@ -34,7 +34,6 @@ export default function QuestionCard(props: {
 		options,
 		answer,
 		favourited,
-		completed,
 		timestamp,
 	} = props.questionCard;
 
@@ -64,8 +63,10 @@ export default function QuestionCard(props: {
 		}) as HTMLInputElement;
 
 		const selectedAnswer = answerOptions.find((option) => {
-			if (option.value === selectAnswer) {
-				return option;
+			if (option instanceof HTMLInputElement) {
+				if (option.value === selectAnswer) {
+					return option;
+				}
 			}
 		}) as HTMLInputElement;
 
@@ -101,11 +102,11 @@ export default function QuestionCard(props: {
 		event.preventDefault();
 
 		// use gamestate to update User.oneQuestion
-setUser(user: UserScheme => ({
-			...user,
-			totalQuestionsAnswered: user.totalQuestionsAnswered + 1,
-			// Add other updates as needed
-		})
+		// setUser(user: UserScheme => ({
+		// 			...user,
+		// 			totalQuestionsAnswered: user.totalQuestionsAnswered + 1,
+		// 			// Add other updates as needed
+		// 		})
 	}
 
 	return (
@@ -158,17 +159,15 @@ setUser(user: UserScheme => ({
 					btnonClick={() => deleteQuestion(1)}
 					btnclassName='btnSecondary'
 				/>
-				
+
 				{showSubmitButton && (
 					<Button
 						btnText='Submit'
-						btnonClick={handleAnswerSubmission}
+						btnonClick={() => handleAnswerSubmission}
 						btnclassName='btnPrimary'
 					/>
 				)}
 			</div>
-			
 		</div>
 	);
 }
- */

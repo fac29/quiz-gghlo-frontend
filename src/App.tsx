@@ -2,11 +2,11 @@ import React from 'react';
 import '../src/index.css';
 import Button from './components/Button/Button';
 import CreateQuestionForm from './components/CreateQuestionForm/CreateQuestionsForm';
-//import QuestionCard from './components/QuestionCard/QuestionCard';
-//import type { QuestionCardProps } from './components/QuestionCard/QuestionCard';
+import QuestionCard from './components/QuestionCard/QuestionCard';
+import type { QuestionCardProps } from './components/QuestionCard/QuestionCard';
 
 // mock question to test functionality of QuestionCard component
-/* const question: QuestionCardProps = {
+const question: QuestionCardProps = {
 	id: 1,
 	category: 'History',
 	difficulty: 'easy',
@@ -16,7 +16,7 @@ import CreateQuestionForm from './components/CreateQuestionForm/CreateQuestionsF
 	favourited: false,
 	completed: false,
 	timestamp: '2023-04-01T10:00:00Z',
-}; */
+};
 
 function App() {
 	/* const [showUI, setShowUI] = React.useState({
@@ -47,10 +47,10 @@ function App() {
 				/>
 
 				<div>
-					{/* <QuestionCard
+					<QuestionCard
 						questionCard={question}
-						toggleDisplay={() => setShowUI}
-					/> */}
+						/* toggleDisplay={() => setShowUI} */
+					/>
 				</div>
 
 				<div>
