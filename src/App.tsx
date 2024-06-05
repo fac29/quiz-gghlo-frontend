@@ -1,9 +1,9 @@
 import React from 'react';
 import '../src/index.css';
-import Button from './components/Button/Button';
 import CreateQuestionForm from './components/CreateQuestionForm/CreateQuestionsForm';
 import QuestionCard from './components/QuestionCard/QuestionCard';
 import type { QuestionCardProps } from './components/QuestionCard/QuestionCard';
+import Sidebar from './components/Sidebar/Sidebar';
 
 // mock question to test functionality of QuestionCard component
 const question: QuestionCardProps = {
@@ -35,16 +35,9 @@ function App() {
 		<React.Fragment>
 			<div className='main'>
 				<h1>best team in the history of FAC</h1>
-				<Button
-					btnclassName='btnPrimary'
-					btnText='yolo'
-					btnonClick={() => false}
-				/>
-				<Button
-					btnclassName='btnSecondary'
-					btnText='dolo'
-					btnonClick={() => false}
-				/>
+				<Sidebar/>
+
+			
 
 				<div>
 					<QuestionCard

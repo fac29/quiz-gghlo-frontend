@@ -1,6 +1,6 @@
 export const deleteQuestion = async (id: number) => {
 	try {
-		const response = await fetch(`http://localhost:3210/questions/${id}`, {
+		const response = await fetch(`https://13.60.83.197:3210/questions/${id}`, {
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export const deleteQuestion = async (id: number) => {
 
 export const resetGame = async () => {
 	try {
-		const response = await fetch(`http://localhost:3210/reset`);
+		const response = await fetch(`https://13.60.83.197:3210/reset`);
 
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
@@ -65,7 +65,7 @@ export const updateQuestion = async ({
 	timestamp,
 }: uQuestion) => {
 	try {
-		const response = await fetch(`http://localhost:3210/questions/${id}`, {
+		const response = await fetch(`https://13.60.83.197:3210/questions/${id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ export const updateQuestion = async ({
 
 export const getAllQuestions = async () => {
 	try {
-		const response = await fetch(`http://localhost:3210/`);
+		const response = await fetch(`https://13.60.83.197:3210/`);
 
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
@@ -131,7 +131,7 @@ export const getFilterQuestions = async ({
 	numberOfQuestions,
 }: qQueryFilter) => {
 	try {
-		const response = await fetch(`http://localhost:3210/`, {
+		const response = await fetch(`https://13.60.83.197:3210/`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -179,7 +179,7 @@ export const createQuestion = async ({
 	completed,
 }: cQuestion) => {
 	try {
-		const response = await fetch(`http://localhost:3210/`, {
+		const response = await fetch(`https://13.60.83.197:3210/`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
